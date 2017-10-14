@@ -1,0 +1,67 @@
+<html>
+    <head>
+            <style>
+            button {
+                width:100px; /*same as the height*/ 
+                height:100px; /*same as the width*/
+                background-color:#ff0000;
+                border:1px solid #ff0000; /*same colour as the background*/
+                color:#fff;
+                font-size:1.6em;
+                /*set the border-radius at half the size of the width and height*/
+                -webkit-border-radius: 50px; 
+                -moz-border-radius: 50px;
+                border-radius: 50px; 
+                /*give the button a small drop shadow*/
+                -webkit-box-shadow: 0 0 10px rgba(0,0,0, .75); 
+                -moz-box-shadow: 0 0 10px rgba(0,0,0, .75); 
+                box-shadow: 2px 2px 15px rgba(0,0,0, .75);
+                }
+                /***NOW STYLE THE BUTTON'S HOVER STATE***/ 
+                input#round:hover{
+                background:#c20b0b; 
+                border:1px solid #c20b0b;
+                /*reduce the size of the shadow to give a pushed effect*/ 
+                -webkit-box-shadow: 0px 0px 5px rgba(0,0,0, .75);
+                -moz-box-shadow: 0px 0px 5px rgba(0,0,0, .75);
+                box-shadow: 0px 0px 5px rgba(0,0,0, .75);
+
+                }
+            </style>
+    </head>
+    <body>
+        Alle lampen</p>
+        <button id="All-on" >Aan</button> <button id="All-off" >Uit</button></p><hr>
+        Muur lamp</p>
+        <button id="A-on" >Aan</button> <button id="A-off" >Uit</button></p><hr>
+        Kleine staande lamp</p>
+        <button id="B-on" >Aan</button> <button id="B-off" >Uit</button></p><hr>
+        Grote staande lamp</p>
+        <button id="C-on" >Aan</button> <button id="C-off" >Uit</button></p><hr>
+        Tuin lampen</p>
+        <button id="D-on" >Aan</button> <button id="D-off" >Uit</button></p><hr>
+        TV kast lamp</p>
+        <button id="E-on" >Aan</button> <button id="E-off" >Uit</button></p><hr>
+        Studeerkamer</p>
+        <button id="Q-on" >Aan</button> <button id="Q-off" >Uit</button></p><hr>
+        Screens Boven</p>
+        <button id="X-on" >&#x25BC;</button> <button id="X-off" >&#x25B2;</button></p>
+        Screens Beneden</p>
+        <button id="Y-on" >&#x25BC;</button> <button id="Y-off" >&#x25B2;</button></p>
+        <div></div>
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).click(function(e){
+                var action = e.target.id.split("-");
+                var actionUrl = "http://192.168.0.77:3000/lights/"+ action[0] +"/" + action[1];
+                $.ajax({
+                url: actionUrl
+                }).done(function(data) {
+                    $('div').append(data);  
+                });
+            });
+        });
+        </script>
+    </body>
+</html>
