@@ -2,7 +2,9 @@ var azure = require('azure-storage');
 var uuencode = require('uuencode');
 var switcher = require('./switching.js')
 
-var queueSvc = azure.createQueueService('', '');
+var queueSvcConfig = require('./queueSvcConfig.js')
+
+var queueSvc = azure.createQueueService(queueSvcConfig.accoutName, queueSvcConfig.accountKey)
 setInterval(handleMessages, 1000);
 
 function handleMessages(){
