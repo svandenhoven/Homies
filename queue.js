@@ -4,7 +4,7 @@ var switcher = require('./switching.js')
 
 var queueSvcConfig = require('./queueSvcConfig.js')
 
-var queueSvc = azure.createQueueService(queueSvcConfig.accoutName, queueSvcConfig.accountKey)
+var queueSvc = azure.createQueueService(queueSvcConfig.accountName, queueSvcConfig.accountKey)
 setInterval(handleMessages, 1000);
 
 function handleMessages(){
