@@ -53,7 +53,7 @@ function handleMessages(){
             var newState = deviceAction.action == "switch.on" ? 1 : 0;
             if (newState) {
                 if (scopes.indexOf('switch.on') >= 0) {
-                    switcher.setswitch(deviceAction.device,newState)
+                    switcher.setSwitch(deviceAction.device,newState)
                     console.log('Set ' + deviceAction.device + ' ' + newState);
                 }
                 else {
@@ -62,7 +62,7 @@ function handleMessages(){
             }
             else {
                 if (scopes.indexOf('switch.off') >= 0) {
-                    switcher.setswitch(deviceAction.device,newState)
+                    switcher.setSwitch(deviceAction.device,newState)
                     console.log('Set ' + deviceAction.device + ' ' + newState);
                 }
                 else {
