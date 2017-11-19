@@ -10,7 +10,7 @@ setInterval(handleMessages, 1000);
 
 function handleMessages(){
 
-    queueSvc.getMessages('raspberrydemo', function(error, result, response){
+    queueSvc.getMessages('raspberry', function(error, result, response){
         if(!error){       
             if(result.length > 0){
                     // Message text is in messages[0].messageText
@@ -21,6 +21,9 @@ function handleMessages(){
                 //ToDo: Decrypt with public key of Bot to ensure origin message
                 var mandateActions = JSON.parse(msgText)
                 console.log('Processing action: ' + mandateActions.id)
+
+                //tst wih a dummy signature
+                //ToDo: Replace with real signature
                 if(mandateActions.mandate.signature == '46115BA2-E609-4AD8-947D-FCF7DBDD0F6E')
                 {
                     console.log("Signature " + mandateActions.name + " approved")
@@ -31,7 +34,7 @@ function handleMessages(){
                     console.log("Signature not approved")
                 }
 
-                queueSvc.deleteMessage('raspberrydemo', message.messageId, message.popReceipt, function(error, response) {
+                queueSvc.deleteMessage('raspberry', message.messageId, message.popReceipt, function(error, response) {
                     if(!error){
                     console.log('Deleted')
                     }
@@ -50,7 +53,7 @@ function handleMessages(){
             var newState = deviceAction.action == "Switch.On" ? 1 : 0;
             if (newState) {
                 if (scopes.indexOf('Switch.On') >= 0) {
-                    switcher.setSwitch(action.device,newState)
+                    switcher.setSwitch(deviceAction.device,newState)
                     console.log('Set ' + deviceAction.device + ' ' + newState);
                 }
                 else {
@@ -59,7 +62,7 @@ function handleMessages(){
             }
             else {
                 if (scopes.indexOf('Switch.Off') >= 0) {
-                    switcher.setSwitch(action.device,newState)
+                    switcher.setSwitch(deviceAction.device,newState)
                     console.log('Set ' + deviceAction.device + ' ' + newState);
                 }
                 else {
