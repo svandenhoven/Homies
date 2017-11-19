@@ -50,23 +50,23 @@ function handleMessages(){
         for (var i = 0; i < mandateActions.actions.length; i++) {
             var scopes = mandateActions.mandate.scope.split(' ');
             var deviceAction = mandateActions.actions[i];
-            var newState = deviceAction.action == "Switch.On" ? 1 : 0;
+            var newState = deviceAction.action == "switch.on" ? 1 : 0;
             if (newState) {
-                if (scopes.indexOf('Switch.On') >= 0) {
-                    switcher.setSwitch(deviceAction.device,newState)
+                if (scopes.indexOf('switch.on') >= 0) {
+                    switcher.setswitch(deviceAction.device,newState)
                     console.log('Set ' + deviceAction.device + ' ' + newState);
                 }
                 else {
-                    console.log('Not Authorized for Switch.On');
+                    console.log('Not Authorized for switch.on');
                 }
             }
             else {
-                if (scopes.indexOf('Switch.Off') >= 0) {
-                    switcher.setSwitch(deviceAction.device,newState)
+                if (scopes.indexOf('switch.off') >= 0) {
+                    switcher.setswitch(deviceAction.device,newState)
                     console.log('Set ' + deviceAction.device + ' ' + newState);
                 }
                 else {
-                    console.log('Not Authorized for Switch.Off');
+                    console.log('Not Authorized for switch.off');
                 }
             }
         }
