@@ -8,7 +8,7 @@ exports.setSwitch = function (deviceId,newState) {
 
 
   if(deviceId == "All") {
-      var lights = ["A","B","C","D","E"]
+      var lights = ["A","B","C","D","E","F"]
       for (var i = 0; i < lights.length; i++) {
         kakuOld.transmit(lights[i], 15, newState)
       }
