@@ -20,7 +20,7 @@ function handleMessages(){
 
                 //ToDo: Decrypt with public key of Bot to ensure origin message
                 var mandateActions = JSON.parse(msgText)
-                console.log('Processing action: ' + mandateActions.id)
+                console.log('Processing action: ' + mandateActions.id + ' on' + mandateActions.executeAfter)
 
                 //tst wih a dummy signature
                 //ToDo: Replace with real signature
