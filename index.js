@@ -7,7 +7,6 @@ var express = require('express')
 var switcher = require('./switching.js')
 
 var app = express()
-let kaku = KlikAanKlikUit(8,375,7,5)
 
 app.get('/',function(req,res) {
   res.sendfile('index.html');
