@@ -4,7 +4,7 @@
 'use strict'
 
 var express = require('express')
-const KlikAanKlikUit = require('kaku-rpi')
+var switcher = require('./switching.js')
 
 var app = express()
 let kaku = KlikAanKlikUit(8,375,7,5)
@@ -35,13 +35,13 @@ app.get('/lights/:deviceId/:state',function(req,res) {
     {
       var lights = ["A","B","C","D","E"]
       for (var i = 0; i < lights.length; i++) {
-        kaku.transmit(lights[i], 15, newState)
+        switcher.setSwitch(lights[i], newState)
         console.log("put " + lights[i] + " " + req.params.state);
       }
     }
     else
     {
-      kaku.transmit(req.params.deviceId, 15, newState)
+      switcher.setSwitch(req.params.deviceId, newState)
       console.log("put " + req.params.deviceId + " " + req.params.state);        
     }
 
