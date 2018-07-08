@@ -59,7 +59,7 @@
         $(document).ready(function(){
             $(document).click(function(e){
                 var action = e.target.id.split("-");
-                var actionUrl = "http://192.168.0.77:3000/lights/"+ action[0] +"/" + action[1];
+                var actionUrl = "http://192.168.1.4:3000/lights/"+ action[0] +"/" + action[1];
                 $.ajax({
                 url: actionUrl
                 }).done(function(data) {
